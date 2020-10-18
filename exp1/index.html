@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- import css hypertext -->
+        <!-- rel is define the relationship between current file and link file -->
+        <link rel="stylesheet" href="style.css">
+        <!-- add script in index -->
+        <script type="text/javascript" src="loadCourse.js"></script>
+    </head>
+    <body>
+        <!-- html call back function need add () -->
+        <!-- html 原生代码，函数一定要加（） -->
+        <button onclick="loadCourses()">Get Course</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Course Content</th>
+                    <th>Course Location</th>
+                    <th>Teacher ID</th>
+                </tr>
+            </thead>        
+            <!-- palce holder for ajax data -->
+            <tbody id="course-content"></tbody>     
+        </table>
+
+    </body>
+</html>
