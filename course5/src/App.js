@@ -19,7 +19,7 @@ export default function App() {
         {/* switch render different */}
         {/* save swtich component into views */}
         <Switch>
-          <Route path="/enrolled-courses">
+          <Route path="/">
             <EnrolledCourses />
           </Route>
           <Route path="/">
