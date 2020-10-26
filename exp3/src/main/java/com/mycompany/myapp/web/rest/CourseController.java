@@ -25,7 +25,7 @@ public class CourseController {
 //        this.userUtility = userUtility;
 //    }
 
-    /// select course
+    /// student enroll course
     ////http method
     /// POST : /course/enrollment
     /// Request body:  {courseName}
@@ -50,7 +50,7 @@ public class CourseController {
         return courseService.getAllCourses();
     }
 
-    //// list enrollmented course
+    //// list enrolled course of student
     /// GET : /course/enrollment
     /// Request body:  null
     /// Response body: [course object] // courseDto
@@ -61,7 +61,7 @@ public class CourseController {
         String userName = userUtility.getUserName();
         return courseService.getEnrolledCourses(userName);
     }
-    /// drop course
+    /// student drop the course
     /// DELETE : /course/enrollment
     /// Request body:  {courseName}
     /// Response body: null // courseDto
@@ -73,8 +73,5 @@ public class CourseController {
         String userName = userUtility.getUserName();
         courseService.dropCourse(courseName, userName);
     }
-
-
-
 
 }

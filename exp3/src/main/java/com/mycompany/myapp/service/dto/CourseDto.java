@@ -16,5 +16,4 @@ public class CourseDto {
      private String courseLocation;
      private String courseContent;
      private Integer teacherId;
-
 }

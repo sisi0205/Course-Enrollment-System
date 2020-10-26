@@ -43,6 +43,17 @@ public class CourseService {
         userCourseRepository.save(userCourse);
     }
 
+    private UserCourse getUserCourse(String courseName, String userName) {
+        User user = userRepository.findOneByLogin(userName)
+            .orElseThrow(() -> new UsernameNotFoundException("User name not found"));
+        Course course = courseRepository.findFirstByCourseName(courseName)
+            .orElseThrow(() -> new IllegalArgumentException("Course name not valid"));
+        return UserCourse.builder()
+            .user(user)
+            .course(course)
+            .build();
+    }
+
 
     /**
      * 1. Get all courses from 'course' table
@@ -92,14 +103,4 @@ public class CourseService {
     }
 
 
-    private UserCourse getUserCourse(String courseName, String userName) {
-        User user = userRepository.findOneByLogin(userName)
-            .orElseThrow(() -> new UsernameNotFoundException("User name not found"));
-        Course course = courseRepository.findFirstByCourseName(courseName)
-            .orElseThrow(() -> new IllegalArgumentException("Course name not valid"));
-        return UserCourse.builder()
-            .user(user)
-            .course(course)
-            .build();
-    }
 }

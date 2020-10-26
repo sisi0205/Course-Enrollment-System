@@ -13,6 +13,7 @@ public interface UserCourseRepository extends JpaRepository<UserCourse, Long> {
 
     Optional<UserCourse> findFirstByUserAndCourse(User user, Course course);
     List<UserCourse> findAllByUser(User user);
+    List<UserCourse> findAllByCourse(Course course);
     /// 1. first select by userId
     /// 2. select by courseId
     /// 3. delete

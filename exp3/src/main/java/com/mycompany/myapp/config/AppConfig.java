@@ -20,8 +20,8 @@ public class AppConfig {
         return new ArrayList<>();
     }
 
-    @Bean
-    public CourseMapper courseMapper() {
-        return new CourseMapper();
-    }
+//    @Bean
+//    public CourseMapper courseMapper() {
+//        return new CourseMapper();
+//    }
 }
