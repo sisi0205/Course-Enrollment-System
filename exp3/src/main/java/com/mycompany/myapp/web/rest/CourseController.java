@@ -1,7 +1,9 @@
 package com.mycompany.myapp.web.rest;
 
+import com.mycompany.myapp.service.CourseService;
 import com.mycompany.myapp.service.dto.CourseDto;
 import com.mycompany.myapp.utils.UserUtility;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,11 +14,17 @@ import java.util.List;
 //@RequestBody
 /// controller + requestBody
 @RestController
+//// add constructor
+@AllArgsConstructor
+///// use Securityconfig
+@RequestMapping(path = "/api")
 public class CourseController {
     private UserUtility userUtility;
-    public CourseController(UserUtility userUtility) {
-        this.userUtility = userUtility;
-    }
+    private CourseService courseService;
+//    public CourseController(UserUtility userUtility) {
+//        this.userUtility = userUtility;
+//    }
+
     /// select course
     ////http method
     /// POST : /course/enrollment
@@ -28,6 +36,7 @@ public class CourseController {
         String courseName = courseDto.getCourseName();
 //        String userName = getUserName();
         String userName = userUtility.getUserName();
+        courseService.enrollCourse(courseName, userName);
     }
 
     /// list all the course
@@ -38,7 +47,7 @@ public class CourseController {
 
     @GetMapping(path = "/course")
     public List<CourseDto> getAllCourses() {
-        return null;
+        return courseService.getAllCourses();
     }
 
     //// list enrollmented course
@@ -50,7 +59,7 @@ public class CourseController {
     @GetMapping(path = "/course/enrollment")
     public List<CourseDto> getEnrolledCourses() {
         String userName = userUtility.getUserName();
-        return null;
+        return courseService.getEnrolledCourses(userName);
     }
     /// drop course
     /// DELETE : /course/enrollment
@@ -62,6 +71,10 @@ public class CourseController {
         String courseName = courseDto.getCourseName();
 //        String userName = getUserName();
         String userName = userUtility.getUserName();
+        courseService.dropCourse(courseName, userName);
     }
+
+
+
 
 }

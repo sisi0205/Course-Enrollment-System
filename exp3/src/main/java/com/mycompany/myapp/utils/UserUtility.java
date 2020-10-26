@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 /// @Component  自己定义的 class .use lazy() 缺点： 需要依赖注入到每个使用者中
 /// @Bean
 ///
-@Component
-//@Bean
+//@Component
+//@Bean use
 public class UserUtility {
 
     public String getUserName() {
