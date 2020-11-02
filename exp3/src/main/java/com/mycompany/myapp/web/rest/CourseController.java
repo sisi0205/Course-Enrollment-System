@@ -62,13 +62,13 @@ public class CourseController {
         return courseService.getEnrolledCourses(userName);
     }
     /// student drop the course
-    /// DELETE : /course/enrollment
+    /// DELETE : /course/enrollment/{courseName}
     /// Request body:  {courseName}
     /// Response body: null // courseDto
     /// Header: Need authorized
-    @DeleteMapping(path = "/course/enrollment")
-    public void dropCourse(@RequestBody CourseDto courseDto) {
-        String courseName = courseDto.getCourseName();
+    @DeleteMapping(path = "/course/enrollment/{courseName}")
+    public void dropCourse(@PathVariable String courseName) {
+//        String courseName = courseDto.getCourseName();
 //        String userName = getUserName();
         String userName = userUtility.getUserName();
         courseService.dropCourse(courseName, userName);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,6 +7,10 @@ import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from "react-router-dom";
+import LoginDialog from "./login/LoginDialog";
+import {TOKEN_COOKIE_NAME} from "../constant";
+import * as cookies from "react-cookies";
+
 
 // jss 
 // write CSS in JS 
@@ -23,7 +27,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar() {
+    const [open, setOpen] = useState(false);
     const classes = useStyles();
+    const token = cookies.load(TOKEN_COOKIE_NAME);
+    const loginDisplayMessage = token ? "Logout" : "Login";
+
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -42,9 +50,19 @@ export default function NavBar() {
                     {/* <Link to="/">All Courses</Link>
           <Link to="/enrolled-courses">Enrolled Courses</Link> */}
 
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit" onClick={handleLoginClick}>{loginDisplayMessage }</Button>
                 </Toolbar>
             </AppBar>
+            <LoginDialog open={open} handleDialogClose={() => setOpen(false)}/>
         </div>
     );
+
+    function handleLoginClick() {
+        if (token) {
+            cookies.remove(TOKEN_COOKIE_NAME);
+            window.location.reload();
+        } else {
+            setOpen(true);
+        }
+    }
 }

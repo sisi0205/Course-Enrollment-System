@@ -45,5 +45,4 @@ public class CourseMapper {
             .teacherId(course.getTeacherId())
             .build();
     }
-
 }
