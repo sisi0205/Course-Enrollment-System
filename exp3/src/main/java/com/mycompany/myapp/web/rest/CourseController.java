@@ -44,7 +44,6 @@ public class CourseController {
     /// Request body:  null
     /// Response body: [course object] // courseDto
     /// Header: Need authorized
-
     @GetMapping(path = "/course")
     public List<CourseDto> getAllCourses() {
         return courseService.getAllCourses();
@@ -55,7 +54,6 @@ public class CourseController {
     /// Request body:  null
     /// Response body: [course object] // courseDto
     /// Header: token
-
     @GetMapping(path = "/course/enrollment")
     public List<CourseDto> getEnrolledCourses() {
         String userName = userUtility.getUserName();

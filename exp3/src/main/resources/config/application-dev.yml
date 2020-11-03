@@ -37,9 +37,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/exp3?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-    username: root
-    password: wanglisi
+    url: jdbc:mysql://database-1.cipxursmxpku.us-west-2.rds.amazonaws.com/exp3?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: admin
+    password: pcOwur3hl9b2PjhcmYs3
     hikari:
       poolName: Hikari
       auto-commit: false
